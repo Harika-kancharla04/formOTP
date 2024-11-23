@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h2>Register</h2>
+    <form action="" id="regform">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email"><br>
+        <label for="pass">Password:</label><br>
+        <input type="password" id="pass"><br>
+        <label for="passs">Retype Password:</label><br>
+        <input type="password" id="passs"><br>
+        <label for="genders">Gender:</label><br>
+        <input list="gender" id="genders">
+        <datalist id="gender">
+            <option value="Male"></option>
+            <option value="Female"></option>
+            <option value="Others"></option>
+        </datalist><br>
+        <label for="mbno">Mobile No:</label><br>
+        <input type="text" id="mbno"><br>
+        <input type="checkbox" id="chck">
+        <label for="chck">I agree to the terms and consitions</label><br>
+        <button id="regbtn">Register</button>
+
+
+
+        
+    </form><br><br>
+    <div style="display: none;" id="otpblock">
+        <form action="" class="otpVerif">
+            <label for="OTP">OTP:</label>
+            <input type="text" id="OTP">
+            <button id="verifybtn">Verify</button>
+        </form>
+    </div>
+    <script>
+        const username=document.getElementById("username")
+        const password=document.getElementById("pass")
+        const email=document.getElementById("email")
+        const passs=document.getElementById("passs")
+        const gender=document.getElementById("genders")
+        const MobNo=document.getElementById("mbno")
+        const RegBtn=document.getElementById("regbtn")
+        const inputOTP=document.getElementById("OTP")
+        const verifybtn=document.getElementById("verifybtn")
+        const otpVerif=document.querySelector(".otpVerif")
+        const otpblock=document.getElementById("otpblock")
+        const check=document.getElementById("chck")
+        let generateOtp
+        
+
+
+        regform.addEventListener("submit",(e)=>{
+           e.preventDefault()
+          if(password.value!== passs.value){
+            alert("Password mismatch")
+            return
+        }  
+        generateOtp=Math.floor(Math.random()*1000000)
+        console.log(generateOtp)
+        otpblock.style.display="block"} )
+
+        otpVerif.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            if(generateOtp==parseInt(inputOTP.value)){
+                alert("OTP verified successfully!!")
+
+
+            username.value=""
+            email.value=''
+            password.value=''
+            passs.value=''
+            gender.value=''
+            MobNo.value=''
+            inputOTP.value=''
+            
+
+            }
+            else{
+                alert("Invalid OTP")
+            }
+        })
+
+        
+    
+
+        
+
+    </script>
+</body>
+</html>
